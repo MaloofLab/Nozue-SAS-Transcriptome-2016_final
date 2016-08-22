@@ -1778,19 +1778,19 @@ my.category.diff.heatmap.graph[[i]]<-my.category.diff.heatmap.graph[[i]] + geom_
 }
 ### use geom_blank() for blank plot
 library(cowplot)
-my.category.heatmap.all <- plot_grid(my.category.heatmap.graph[[1]],ggplot()+geom_blank(),ggplot()+geom_blank(),my.category.diff.heatmap.graph[[17]],my.category.diff.heatmap.graph[[19]],my.category.diff.heatmap.graph[[3]],my.category.diff.heatmap.graph[[4]],my.category.diff.heatmap.graph[[5]],my.category.diff.heatmap.graph[[14]],my.category.diff.heatmap.graph[[10]],my.category.diff.heatmap.graph[[6]],my.category.diff.heatmap.graph[[13]],my.category.diff.heatmap.graph[[7]],my.category.diff.heatmap.graph[[8]],my.category.diff.heatmap.graph[[9]],
-                      labels=c("A","","","B","","","","","","","","","","",""),
-                      vjust = 1.1, hjust=-0.5,
-                      ncol=3,nrow=5,
-                      label_size = 50)
-setwd("../../Nozue2016_SAStranscriptome_output/figs_tables/")
-save_plot("Fig5_all.my.category.diff.expression.pattern.v4.FDR0.0001.png", my.category.heatmap.all,
-          ncol = 3, # we're saving a grid plot of 2 columns
-          nrow = 5, # and 2 rows
-          base_aspect_ratio = 2.5,
-          base_height=6,
-          limitsize = FALSE
-)
+# my.category.heatmap.all <- plot_grid(my.category.heatmap.graph[[1]],ggplot()+geom_blank(),ggplot()+geom_blank(),my.category.diff.heatmap.graph[[17]],my.category.diff.heatmap.graph[[19]],my.category.diff.heatmap.graph[[3]],my.category.diff.heatmap.graph[[4]],my.category.diff.heatmap.graph[[5]],my.category.diff.heatmap.graph[[14]],my.category.diff.heatmap.graph[[10]],my.category.diff.heatmap.graph[[6]],my.category.diff.heatmap.graph[[13]],my.category.diff.heatmap.graph[[7]],my.category.diff.heatmap.graph[[8]],my.category.diff.heatmap.graph[[9]],
+#                       labels=c("A","","","B","","","","","","","","","","",""),
+#                       vjust = 1.1, hjust=-0.5,
+#                       ncol=3,nrow=5,
+#                       label_size = 50)
+# setwd("../../Nozue2016_SAStranscriptome_output/figs_tables/")
+# save_plot("Fig5_all.my.category.diff.expression.pattern.v4.FDR0.0001.png", my.category.heatmap.all,
+#           ncol = 3, # we're saving a grid plot of 2 columns
+#           nrow = 5, # and 2 rows
+#           base_aspect_ratio = 2.5,
+#           base_height=6,
+#           limitsize = FALSE
+# )
 # supplement Fig2 (absolute value)
 # extract legend
 # since Col with legend is different in size from others. I need to extract legend and plot it in different space.
@@ -1803,16 +1803,34 @@ g_legend<-function(a.gplot){
   return(legend)} 
 legend <- g_legend(my.category.heatmap.graph[[1]]) 
 #
-my.category.heatmap.all <- plot_grid(my.category.heatmap.graph[[1]]+theme(legend.position="none"),legend ,ggplot()+geom_blank(),my.category.heatmap.graph[[17]],my.category.heatmap.graph[[19]],my.category.heatmap.graph[[3]],my.category.heatmap.graph[[4]],my.category.heatmap.graph[[5]],my.category.heatmap.graph[[14]],my.category.heatmap.graph[[10]],my.category.heatmap.graph[[6]],my.category.heatmap.graph[[13]],my.category.heatmap.graph[[7]],my.category.heatmap.graph[[8]],my.category.heatmap.graph[[9]],
-                      labels=c("A","","","B","","","","","","","","","","",""),
+library(cowplot)
+# my.category.heatmap.all <- plot_grid(my.category.heatmap.graph[[1]]+theme(legend.position="none"),legend ,ggplot()+geom_blank(),my.category.heatmap.graph[[17]],my.category.heatmap.graph[[19]],my.category.heatmap.graph[[3]],my.category.heatmap.graph[[4]],my.category.heatmap.graph[[5]],my.category.heatmap.graph[[14]],my.category.heatmap.graph[[10]],my.category.heatmap.graph[[6]],my.category.heatmap.graph[[13]],my.category.heatmap.graph[[7]],my.category.heatmap.graph[[8]],my.category.heatmap.graph[[9]],
+#                       labels=c("A","","","B","","","","","","","","","","",""),
+#                       vjust = 1.1, hjust=-0.5,
+#                       ncol=3,nrow=5,
+#                       label_size = 50)
+# #
+# setwd("../../Nozue2016_SAStranscriptome_output/figs_tables/")
+# save_plot("Fig_S2_all.my.category.expression.pattern.v10.png", my.category.heatmap.all,
+#           ncol = 3, # we're saving a grid plot of 2 columns
+#           nrow = 5, # and 2 rows
+#           base_aspect_ratio = 2.5,
+#           base_height=6,
+#           limitsize = FALSE
+# )
+
+### combine all Fig. 5A, B, C
+
+my.category.heatmap.all3 <- plot_grid(my.category.heatmap.graph[[1]]+theme(legend.position="none"),legend ,ggplot()+geom_blank(),my.category.heatmap.graph[[17]],my.category.heatmap.graph[[19]],my.category.heatmap.graph[[3]],my.category.heatmap.graph[[4]],my.category.heatmap.graph[[5]],my.category.heatmap.graph[[14]],my.category.heatmap.graph[[10]],my.category.heatmap.graph[[6]],my.category.heatmap.graph[[13]],my.category.heatmap.graph[[7]],my.category.heatmap.graph[[8]],my.category.heatmap.graph[[9]],my.category.diff.heatmap.graph[[17]],my.category.diff.heatmap.graph[[19]],my.category.diff.heatmap.graph[[3]],my.category.diff.heatmap.graph[[4]],my.category.diff.heatmap.graph[[5]],my.category.diff.heatmap.graph[[14]],my.category.diff.heatmap.graph[[10]],my.category.diff.heatmap.graph[[6]],my.category.diff.heatmap.graph[[13]],my.category.diff.heatmap.graph[[7]],my.category.diff.heatmap.graph[[8]],my.category.diff.heatmap.graph[[9]],
+                      labels=c("A","","","B","","","","","","","","","","","","C","","","","","","","","","","",""),
                       vjust = 1.1, hjust=-0.5,
-                      ncol=3,nrow=5,
+                      ncol=3,nrow=9,
                       label_size = 50)
 #
 setwd("../../Nozue2016_SAStranscriptome_output/figs_tables/")
-save_plot("Fig_S2_all.my.category.expression.pattern.v10.png", my.category.heatmap.all,
+save_plot("Fig_5_all.my.category.expression.pattern.v11.png", my.category.heatmap.all3,
           ncol = 3, # we're saving a grid plot of 2 columns
-          nrow = 5, # and 2 rows
+          nrow = 9, # 
           base_aspect_ratio = 2.5,
           base_height=6,
           limitsize = FALSE
