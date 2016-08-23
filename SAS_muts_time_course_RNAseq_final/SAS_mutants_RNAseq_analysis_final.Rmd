@@ -1835,7 +1835,14 @@ save_plot("Fig_5_all.my.category.expression.pattern.v11b.png", my.category.heatm
           base_height=6,
           limitsize = FALSE
 )
-# having space between A, B, C
+save_plot("Fig_5_all.my.category.expression.pattern.v11b.pdf", my.category.heatmap.all3,
+          ncol = 3, # we're saving a grid plot of 2 columns
+          nrow = 9, # 
+          base_aspect_ratio = 2.5,
+          base_height=6,
+          limitsize = FALSE
+)
+# having space between A, B, C 
 ## 
 my.category.heatmap.A <- plot_grid(my.category.heatmap.graph[[1]]+theme(legend.position="none"),legend ,#ggplot()+geom_blank(),
                       #labels=c("A","",""),
