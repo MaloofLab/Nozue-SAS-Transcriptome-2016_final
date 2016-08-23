@@ -1801,7 +1801,7 @@ g_legend<-function(a.gplot){
   leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box") 
   legend <- tmp$grobs[[leg]] 
   return(legend)} 
-legend <- g_legend(my.category.heatmap.graph[[1]]) 
+legend <- g_legend(my.category.heatmap.graph[[1]]+ guides(fill = guide_legend(keywidth = 3, keyheight = 1)+theme(legend.position="bottom"))) 
 #
 library(cowplot)
 # my.category.heatmap.all <- plot_grid(my.category.heatmap.graph[[1]]+theme(legend.position="none"),legend ,ggplot()+geom_blank(),my.category.heatmap.graph[[17]],my.category.heatmap.graph[[19]],my.category.heatmap.graph[[3]],my.category.heatmap.graph[[4]],my.category.heatmap.graph[[5]],my.category.heatmap.graph[[14]],my.category.heatmap.graph[[10]],my.category.heatmap.graph[[6]],my.category.heatmap.graph[[13]],my.category.heatmap.graph[[7]],my.category.heatmap.graph[[8]],my.category.heatmap.graph[[9]],
@@ -1828,13 +1828,50 @@ my.category.heatmap.all3 <- plot_grid(my.category.heatmap.graph[[1]]+theme(legen
                       label_size = 50)
 #
 setwd("../../Nozue2016_SAStranscriptome_output/figs_tables/")
-save_plot("Fig_5_all.my.category.expression.pattern.v11.png", my.category.heatmap.all3,
+save_plot("Fig_5_all.my.category.expression.pattern.v11b.png", my.category.heatmap.all3,
           ncol = 3, # we're saving a grid plot of 2 columns
           nrow = 9, # 
           base_aspect_ratio = 2.5,
           base_height=6,
           limitsize = FALSE
 )
+# having space between A, B, C
+## 
+my.category.heatmap.A <- plot_grid(my.category.heatmap.graph[[1]]+theme(legend.position="none"),legend ,#ggplot()+geom_blank(),
+                      #labels=c("A","",""),
+                      rel_widths=c(1,2),
+                      rel_htights=c(1,4),
+                      vjust = 1.1, hjust=-0.5,
+                      ncol=3,nrow=1,
+                      label_size = 50)
+my.category.heatmap.B <- plot_grid(my.category.heatmap.graph[[17]],my.category.heatmap.graph[[19]],my.category.heatmap.graph[[3]],my.category.heatmap.graph[[4]],my.category.heatmap.graph[[5]],my.category.heatmap.graph[[14]],my.category.heatmap.graph[[10]],my.category.heatmap.graph[[6]],my.category.heatmap.graph[[13]],my.category.heatmap.graph[[7]],my.category.heatmap.graph[[8]],my.category.heatmap.graph[[9]],
+                      #labels=c("B","","","","","","","","","","","","C","","","","","","","","","","",""),
+                      vjust = 1.1, hjust=-0.5,
+                      ncol=3,nrow=4,
+                      label_size = 50)
+my.category.heatmap.C <- plot_grid(my.category.diff.heatmap.graph[[17]],my.category.diff.heatmap.graph[[19]],my.category.diff.heatmap.graph[[3]],my.category.diff.heatmap.graph[[4]],my.category.diff.heatmap.graph[[5]],my.category.diff.heatmap.graph[[14]],my.category.diff.heatmap.graph[[10]],my.category.diff.heatmap.graph[[6]],my.category.diff.heatmap.graph[[13]],my.category.diff.heatmap.graph[[7]],my.category.diff.heatmap.graph[[8]],my.category.diff.heatmap.graph[[9]],
+                      #labels=c("C","","","","","","","","","","",""),
+                      vjust = 1.1, hjust=-0.5,
+                      ncol=3,nrow=4,
+                      label_size = 50)
+my.category.heatmap.ABC<-plot_grid(my.category.heatmap.A,my.category.heatmap.B,my.category.heatmap.C,
+                                   labels=c("A","B","C"),
+                                   rel_widths=c(2,1,1),
+                                   rel_heights=c(1,3,3),
+                                   ncol=1,nrow=3,label_size = 50,
+                                   vjust = -0.1, hjust=-0.5)
+
+setwd("../../Nozue2016_SAStranscriptome_output/figs_tables/")
+ save_plot("Fig_5_all.my.category.expression.pattern.v11c.png", my.category.heatmap.ABC,
+           ncol = 1, # we're saving a grid plot of 2 columns
+           nrow = 3, # 
+           base_aspect_ratio = 2.5,
+           base_height=20,
+           limitsize = FALSE
+ )
+
+
+
 ```
 
 # Does each WGCNA module contain shade-responsive genes? (011216)
